@@ -1,0 +1,321 @@
+/* ==================================================
+   VENDRA — Premium Navbar
+   ================================================== */
+
+.vx-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* ---------- Top promo strip ---------- */
+.vx-topbar {
+    background: linear-gradient(90deg, #1a1033, #3b1d7a);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 500;
+    max-height: 40px;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+}
+
+.vx-topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-block: 9px;
+}
+
+.vx-topbar i {
+    color: #c4b5fd;
+    margin-right: 6px;
+}
+
+.vx-header.scrolled .vx-topbar {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* ---------- Main bar ---------- */
+.vx-nav {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+    padding: 14px 0;
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vx-header.scrolled .vx-nav {
+    padding: 8px 0;
+    box-shadow: 0 10px 30px rgba(26, 16, 51, 0.08);
+}
+
+.vx-nav > .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ---------- Logo ---------- */
+.vx-brand {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 24px;
+}
+
+.vx-brand img {
+    height: 42px;
+    width: auto;
+    transition: transform 0.3s ease, height 0.3s ease;
+}
+
+.vx-brand:hover img {
+    transform: scale(1.04);
+}
+
+.vx-header.scrolled .vx-brand img {
+    height: 36px;
+}
+
+/* ---------- Links (pill group) ---------- */
+.vx-links {
+    gap: 4px;
+    padding: 5px;
+    background: #f6f2ff;
+    border: 1px solid #ece6f7;
+    border-radius: 999px;
+}
+
+.vx-links .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px !important;
+    border-radius: 999px;
+    color: #6b6580 !important;
+    font-size: 14.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.vx-links .nav-link i {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.vx-links .nav-link:hover {
+    color: #1a1033 !important;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.vx-links .nav-link.active {
+    color: #7c3aed !important;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.15);
+}
+
+.vx-links .nav-link.active i {
+    opacity: 1;
+}
+
+/* ---------- Icon buttons ---------- */
+.vx-menu-actions,
+.vx-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vx-menu-actions {
+    margin-left: 16px;
+}
+
+.vx-right {
+    margin-left: 8px;
+}
+
+.vx-icon-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid #ece6f7;
+    background: #ffffff;
+    color: #1a1033;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.vx-icon-btn:hover {
+    color: #7c3aed;
+    border-color: #c4b5fd;
+    background: #f6f2ff;
+    transform: translateY(-2px);
+}
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    border: 2px solid #ffffff;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.vx-cart.bump {
+    animation: vx-bump 0.45s ease;
+}
+
+@keyframes vx-bump {
+    0%, 100% { transform: scale(1); }
+    40% { transform: scale(1.18); }
+}
+
+.vx-divider {
+    width: 1px;
+    height: 28px;
+    margin: 0 6px;
+    background: #ece6f7;
+}
+
+/* ---------- Sign in ---------- */
+.vx-signin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    transition: all 0.25s ease;
+}
+
+.vx-signin:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(124, 58, 237, 0.4);
+}
+
+/* ---------- Mobile menu button ---------- */
+.vx-toggler {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #ece6f7;
+    border-radius: 14px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.vx-toggler span {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #1a1033;
+    transition: all 0.3s ease;
+}
+
+.vx-toggler[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.vx-toggler[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.vx-toggler[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Tablet & mobile ---------- */
+@media (max-width: 991.98px) {
+    .vx-brand {
+        margin-right: auto;
+    }
+
+    .vx-brand img {
+        height: 36px;
+    }
+
+    .vx-nav .navbar-collapse {
+        margin-top: 14px;
+        padding: 14px;
+        background: #ffffff;
+        border: 1px solid #ece6f7;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(26, 16, 51, 0.1);
+    }
+
+    .vx-links {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .vx-links .nav-link {
+        display: flex;
+        padding: 12px 16px !important;
+        border-radius: 14px;
+    }
+
+    .vx-links .nav-link.active {
+        background: #f6f2ff;
+        box-shadow: none;
+    }
+
+    .vx-menu-actions {
+        margin: 12px 0 0;
+        padding-top: 12px;
+        border-top: 1px solid #ece6f7;
+        flex-wrap: wrap;
+    }
+
+    .vx-menu-actions .vx-icon-btn {
+        width: auto;
+        flex: 1;
+        display: inline-flex;
+        gap: 8px;
+        justify-content: center;
+        border-radius: 14px;
+        font-size: 14.5px;
+        font-weight: 600;
+    }
+
+    .vx-menu-actions .vx-icon-btn i {
+        font-size: 17px;
+    }
+
+    .vx-menu-actions .vx-signin {
+        width: 100%;
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .vx-topbar {
+        font-size: 12px;
+    }
+
+    .vx-topbar .container {
+        justify-content: center;
+    }
+}
