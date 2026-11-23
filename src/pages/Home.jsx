@@ -3,6 +3,8 @@ import { motion, MotionConfig, useScroll } from 'motion/react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import '../css/home.css';
+import { Discovery, Benefits, Campaign, Reviews, ExploreNav } from '../components/HomeEdit';
+import '../css/home-edit.css';
 
 const products = [
   { name: 'Wireless Headphones', store: 'SoundHub', image: '/images/headPhone.png', price: 79, oldPrice: 99, rating: 4.8, reviews: 214, tag: '-20%' },
@@ -16,8 +18,9 @@ const stores = [
 ];
 const steps = [
   ['01', 'bi-search', 'Discover', 'Browse products from multiple trusted stores.'],
-  ['02', 'bi-bag', 'Shop', 'Add your favorite products to your cart.'],
-  ['03', 'bi-truck', 'Receive', 'Track your order until it reaches your door.'],
+  ['02', 'bi-bag', 'Add to cart', 'Bring your favorite finds together in one cart.'],
+  ['03', 'bi-credit-card', 'Checkout', 'Review your order and choose how to pay.'],
+  ['04', 'bi-truck', 'Track your order', 'Follow your order until it reaches your door.'],
 ];
 const icon = name => <i aria-hidden="true" className={`bi ${name}`} />;
 
@@ -53,11 +56,16 @@ export default function Home() {
   const results = products.filter(p => `${p.name} ${p.store}`.toLowerCase().includes(query.toLowerCase()));
   return <MotionConfig reducedMotion="user"><motion.div aria-hidden="true" className="home-scroll-progress" style={{ scaleX: scrollYProgress }} /><main className="vh-home">
     <Hero onSearch={search} />
+    <ExploreNav />
     <section className="vh-section" id="products"><SectionHeading label="Popular now" title="Featured products"><Link className="vh-all" to="/products">View all products {icon('bi-arrow-right')}</Link></SectionHeading>
       {query && <p role="status">{results.length} featured {results.length === 1 ? 'match' : 'matches'} for “{query}” · <button className="vh-clear" onClick={() => setQuery('')}>Show all</button></p>}
       <div className="vh-grid">{results.map(p => <ProductCard key={p.name} {...p} />)}</div>
     </section>
-    <section className="vh-section" id="stores"><SectionHeading label="Shop your way" title="Featured stores" /><div className="vh-grid">{stores.map(s => <article className="store-card" key={s.store}><div className="store-cover"><img loading="lazy" src={s.image} alt="" /></div><div className="store-body"><span className="store-logo">{s.store[0]}</span><div className="store-info"><h3>{s.store}</h3><p>{s.category}</p></div><div className="store-rating">{icon('bi-star-fill')} {s.rating}</div></div><button type="button" className="btn btn-vendra-soft w-100" onClick={() => search(s.store)}>Visit store</button></article>)}</div></section>
+    <Discovery products={products} />
+    <section className="vh-section" id="stores"><SectionHeading label="Shop your way" title="Featured stores" /><div className="vh-grid">{stores.map(s => <article className="store-card" key={s.store}><div className="store-cover"><img loading="lazy" src={s.image} alt="" /></div><div className="store-body"><span className="store-logo">{s.store[0]}</span><div className="store-info"><h3>{s.store} <i className="bi bi-patch-check-fill he-verified" aria-label="Verified store" role="img" /></h3><p>{s.category} · {products.filter(p => p.store === s.store).length} featured product</p></div><div className="store-rating">{icon('bi-star-fill')} {s.rating}</div></div><button type="button" className="btn btn-vendra-soft w-100" onClick={() => search(s.store)}>Visit store</button></article>)}</div></section>
+    <Benefits />
     <section className="vh-section vh-how" id="how"><SectionHeading label="Simple shopping" title="How Vendra works" /><div className="vh-grid">{steps.map(([number, symbol, title, text]) => <article key={number} className="vh-step"><small>STEP {number}</small>{icon(symbol)}<h3>{title}</h3><p>{text}</p></article>)}</div><p className="vh-delivery">{icon('bi-truck')} Fast delivery, right to your door.</p></section>
+    <Campaign />
+    <Reviews products={products} />
   </main></MotionConfig>;
 }
